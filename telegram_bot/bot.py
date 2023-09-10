@@ -44,7 +44,32 @@ def answer(message):
         answer_data = spacy_ml.predict_csv(downloaded_file.decode())
         # csv module can write data in io.StringIO buffer only
         s = io.StringIO()
-        csv.writer(s).writerows(answer_data)
+        writer = csv.writer(s, delimiter=";")
+        writer.writerow(('Id','Категория','Уровень рейтинга'))
+        writer.writerows(answer_data)
+        s.seek(0)
+        # python-telegram-bot library can send files only from io.BytesIO buffer
+        # we need to convert StringIO to BytesIO
+        buf = io.BytesIO()
+
+        # extract csv-string, convert it to bytes and write to buffer
+        buf.write(s.getvalue().encode())
+        buf.seek(0)
+
+        # set a filename with file's extension
+        buf.name = f'answer{message.id}.csv'
+        bot.send_document(message.chat.id, document=buf)
+        do_again(message)
+    elif 'xlsx' == file_name.split('.')[1]:        
+        src = file_name
+        with open("files/" + src, 'wb') as new_file:
+            new_file.write(downloaded_file)
+        answer_data = spacy_ml.predict_xlsx(f'files/{file_name}')
+        # csv module can write data in io.StringIO buffer only
+        s = io.StringIO()
+        writer = csv.writer(s, delimiter=";")
+        writer.writerow(('Id','Категория','Уровень рейтинга'))
+        writer.writerows(answer_data)
         s.seek(0)
         # python-telegram-bot library can send files only from io.BytesIO buffer
         # we need to convert StringIO to BytesIO
