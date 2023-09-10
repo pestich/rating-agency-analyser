@@ -1,2 +1,4 @@
 venv/
-row_data/
+raw_data/
+.idea/
+

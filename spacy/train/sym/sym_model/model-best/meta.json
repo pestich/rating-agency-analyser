@@ -17,42 +17,48 @@
     "mode":"default"
   },
   "labels":{
-    "textcat":[
-      "A",
-      "B"
+    "textcat_multilabel":[
+      "1",
+      "2",
+      "3"
     ]
   },
   "pipeline":[
-    "textcat"
+    "textcat_multilabel"
   ],
   "components":[
-    "textcat"
+    "textcat_multilabel"
   ],
   "disabled":[
 
   ],
   "performance":{
-    "cats_score":0.9041742287,
-    "cats_score_desc":"macro F",
-    "cats_micro_p":0.9083333333,
-    "cats_micro_r":0.9083333333,
-    "cats_micro_f":0.9083333333,
-    "cats_macro_p":0.8985714286,
-    "cats_macro_r":0.9133333333,
-    "cats_macro_f":0.9041742287,
-    "cats_macro_auc":0.9424444444,
+    "cats_score":0.9199227177,
+    "cats_score_desc":"macro AUC",
+    "cats_micro_p":0.7822580645,
+    "cats_micro_r":0.8083333333,
+    "cats_micro_f":0.7950819672,
+    "cats_macro_p":0.7998140155,
+    "cats_macro_r":0.8084636231,
+    "cats_macro_f":0.8002343688,
+    "cats_macro_auc":0.9199227177,
     "cats_f_per_type":{
-      "A":{
-        "p":0.9571428571,
-        "r":0.8933333333,
-        "f":0.924137931
+      "1":{
+        "p":0.9696969697,
+        "r":0.8205128205,
+        "f":0.8888888889
       },
-      "B":{
-        "p":0.84,
-        "r":0.9333333333,
-        "f":0.8842105263
+      "2":{
+        "p":0.688172043,
+        "r":0.8,
+        "f":0.7398843931
+      },
+      "3":{
+        "p":0.7415730337,
+        "r":0.8048780488,
+        "f":0.7719298246
       }
     },
-    "textcat_loss":22.1383718321
+    "textcat_multilabel_loss":2.1383329053
   }
 }
